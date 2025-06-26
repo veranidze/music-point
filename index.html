@@ -397,21 +397,61 @@
             dayScheduleSlots.innerHTML = '';
             
             const dateStr = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-            const bookingsForDay = monthBookings[dateStr] || [];
+            const bookingsForDay = (monthBookings[dateStr] || []).map(b => {
+                // Преобразуем время в минуты с начала дня
+                const [startH, startM] = b.startTime.split(":").map(Number);
+                const [endH, endM] = b.endTime.split(":").map(Number);
+                return {
+                    ...b,
+                    startMinutes: startH * 60 + startM,
+                    endMinutes: endH * 60 + endM
+                };
+            }).sort((a, b) => a.startMinutes - b.startMinutes);
+
+            const startHour = 8, endHour = 23;
+            const dayStart = startHour * 60;
+            const dayEnd = endHour * 60;
+            let lastEnd = dayStart;
 
             if (bookingsForDay.length === 0) {
-                dayScheduleSlots.innerHTML = '<div class="text-slate-400 text-center p-8">На этот день нет записей</div>';
+                // Весь день свободен
+                const freeDiv = document.createElement('div');
+                freeDiv.className = 'p-2.5 rounded-md text-sm border flex items-center bg-slate-700/40 text-slate-300 border-slate-500/40';
+                freeDiv.innerHTML = `<span class="font-bold w-28 flex-shrink-0">${formatTime(dayStart)} - ${formatTime(dayEnd)}</span> <span>Свободно</span>`;
+                dayScheduleSlots.appendChild(freeDiv);
             } else {
-                bookingsForDay.forEach(booking => {
+                bookingsForDay.forEach((booking, idx) => {
+                    // Свободный слот до события
+                    if (booking.startMinutes > lastEnd) {
+                        const freeDiv = document.createElement('div');
+                        freeDiv.className = 'p-2.5 rounded-md text-sm border flex items-center bg-slate-700/40 text-slate-300 border-slate-500/40';
+                        freeDiv.innerHTML = `<span class="font-bold w-28 flex-shrink-0">${formatTime(lastEnd)} - ${formatTime(booking.startMinutes)}</span> <span>Свободно</span>`;
+                        dayScheduleSlots.appendChild(freeDiv);
+                    }
+                    // Занятый слот
                     const slotDiv = document.createElement('div');
                     slotDiv.className = 'p-2.5 rounded-md text-sm border flex items-center bg-red-500/30 text-red-300/80 border-red-500/40';
                     const timeText = `${booking.startTime} - ${booking.endTime}`;
                     slotDiv.innerHTML = `<span class="font-bold w-28 flex-shrink-0">${timeText}</span> <span>${booking.occupant}</span>`;
                     dayScheduleSlots.appendChild(slotDiv);
+                    lastEnd = Math.max(lastEnd, booking.endMinutes);
                 });
+                // Свободный слот после последнего события
+                if (lastEnd < dayEnd) {
+                    const freeDiv = document.createElement('div');
+                    freeDiv.className = 'p-2.5 rounded-md text-sm border flex items-center bg-slate-700/40 text-slate-300 border-slate-500/40';
+                    freeDiv.innerHTML = `<span class="font-bold w-28 flex-shrink-0">${formatTime(lastEnd)} - ${formatTime(dayEnd)}</span> <span>Свободно</span>`;
+                    dayScheduleSlots.appendChild(freeDiv);
+                }
             }
 
             renderBookingButtons();
+        }
+
+        function formatTime(minutes) {
+            const h = Math.floor(minutes / 60);
+            const m = minutes % 60;
+            return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
         }
 
         function showCalendarView() {
