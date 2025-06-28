@@ -170,9 +170,12 @@
         </div>
     </div>
 
-    <header class="bg-gradient-to-t from-slate-700 to-slate-900 text-white text-center p-4 shadow-lg z-20">
+    <header class="bg-gradient-to-t from-slate-700 to-slate-900 text-white text-center p-4 pb-6 sm:pb-7 shadow-lg z-20 relative" style="min-height:70px;">
         <h1 class="text-xl font-bold">Music Point Batumi</h1>
         <p class="text-sm text-slate-400">Нажмите на точку, чтобы посмотреть расписание</p>
+        <div class="mt-2 flex justify-center">
+            <button id="show-points-list-btn" class="bg-sky-600 hover:bg-sky-700 text-white text-xs font-semibold rounded-full px-4 py-1 shadow transition-all">Показать точки списком</button>
+        </div>
     </header>
 
     <div id="map-container">
@@ -220,6 +223,17 @@
                 <div id="day-schedule-slots" class="overflow-y-auto p-3 sm:p-4 space-y-2 flex-grow min-h-0 max-h-[55vh]"></div>
                 <div id="booking-buttons" class="p-3 sm:p-4 border-t border-white/20 flex-shrink-0"></div>
             </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно со списком точек -->
+    <div id="points-list-modal" class="fixed inset-0 z-50 flex justify-center items-center p-2 sm:p-4 opacity-0 pointer-events-none">
+        <div class="glass-effect rounded-3xl shadow-2xl w-full sm:max-w-md max-h-[90vh] flex flex-col transform scale-95 transition-transform duration-300">
+            <div class="flex justify-between items-center p-3 border-b border-white/20 flex-shrink-0">
+                <h2 class="text-base font-semibold text-white">Выберите точку</h2>
+                <button id="close-points-list-modal" class="p-2 rounded-full hover:bg-white/10 transition-colors"><svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg></button>
+            </div>
+            <div id="points-list-buttons" class="flex flex-col gap-2 p-4 overflow-y-auto"></div>
         </div>
     </div>
 
@@ -498,6 +512,40 @@
             modal.classList.add('opacity-0', 'pointer-events-none');
             document.getElementById('schedule-content').classList.add('scale-95');
         }
+
+        // --- Логика для модального окна со списком точек ---
+        const pointsListModal = document.getElementById('points-list-modal');
+        const showPointsListBtn = document.getElementById('show-points-list-btn');
+        const closePointsListModal = document.getElementById('close-points-list-modal');
+        const pointsListButtons = document.getElementById('points-list-buttons');
+
+        showPointsListBtn.addEventListener('click', () => {
+            // Заполняем список точек
+            pointsListButtons.innerHTML = '';
+            musicPoints.forEach(point => {
+                const btn = document.createElement('button');
+                btn.className = 'w-full bg-slate-700/80 hover:bg-sky-600 text-white font-semibold rounded-lg py-2 px-3 text-sm shadow transition-all flex items-center justify-between';
+                btn.innerHTML = `<span>${point.name}</span><svg class='w-4 h-4 text-sky-300 ml-2' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'/></svg>`;
+                btn.addEventListener('click', () => {
+                    pointsListModal.classList.add('opacity-0', 'pointer-events-none');
+                    openModal(point);
+                });
+                pointsListButtons.appendChild(btn);
+            });
+            pointsListModal.classList.remove('opacity-0', 'pointer-events-none');
+            pointsListModal.querySelector('.glass-effect').classList.remove('scale-95');
+        });
+        closePointsListModal.addEventListener('click', () => {
+            pointsListModal.classList.add('opacity-0', 'pointer-events-none');
+            pointsListModal.querySelector('.glass-effect').classList.add('scale-95');
+        });
+        // Закрытие по Esc
+        window.addEventListener('keydown', (e) => {
+            if (!pointsListModal.classList.contains('opacity-0') && e.key === 'Escape') {
+                pointsListModal.classList.add('opacity-0', 'pointer-events-none');
+                pointsListModal.querySelector('.glass-effect').classList.add('scale-95');
+            }
+        });
 
         musicPoints.forEach(point => {
             const customIcon = L.divIcon({ 
