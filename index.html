@@ -240,21 +240,21 @@
     <script>
         const GOOGLE_API_KEY = 'AIzaSyBFJhCPZ6wcXmfUw6v83paIFNln_fpPIj0'; 
         
+        // Добавим короткое обозначение для каждой точки
         const musicPoints = [
-            { id: 1, name: "Магнолия (ул. Шерифа Химшиашвили 4)", address: "ул. Шерифа Химшиашвили 4", coords: [41.644387, 41.616821], contacts: { telegram: "https://t.me/musicpoint_batumi", whatsapp: "https://api.whatsapp.com/send/?phone=995558661437&text&type=phone_number&app_absent=0", instagram: "https://www.instagram.com/musicpoint_batumi" }, calendarId: 'ef133c541883862573b862447b38a2a2e518d1097d9609f2478dc3cbd2133519@group.calendar.google.com' },
-            { id: 2, name: "Бараташвили 45", address: "ул. Бараташвили 45", coords: [41.647130, 41.639266], contacts: { telegram: "https://t.me/musicpoint_batumi", whatsapp: "https://api.whatsapp.com/send/?phone=995558661437&text&type=phone_number&app_absent=0", instagram: "https://www.instagram.com/musicpoint_batumi" }, calendarId: 'musicpointbatumi@gmail.com' },
-            { id: 3, name: "Oранж нижний зал (барабаны) (ул. Такаишвили 8)", address: "ул. Такаишвили 8", coords: [41.641279928201726, 41.628352071113504], contacts: { telegram: "https://t.me/musicpoint_batumi", whatsapp: "https://api.whatsapp.com/send/?phone=995558661437&text&type=phone_number&app_absent=0", instagram: "https://www.instagram.com/musicpoint_batumi" }, calendarId: '6f2a768f07757e6e2895e6bb4383763bbd7b1bfa1e6915e83243615e4443034b@group.calendar.google.com' },
-            { id: 4, name: "Оранж верхний зал (сцена) (ул. Такаишвили 8)", address: "ул. Такаишвили 8", coords: [41.641375, 41.628412], contacts: { telegram: "https://t.me/musicpoint_batumi", whatsapp: "https://api.whatsapp.com/send/?phone=995558661437&text&type=phone_number&app_absent=0", instagram: "https://www.instagram.com/musicpoint_batumi" }, calendarId: '83fe942e969bae3b62e1786751202c1a3ecd9b63a1f7ce8539b359478a0b1cad@group.calendar.google.com' },
-            { id: 14, name: "Оранж нижний вокальный ул. Такаишвили 8", address: "ул. Такаишвили 8", coords: [41.64136517546818, 41.62833409637027], contacts: { telegram: "https://t.me/musicpoint_batumi", whatsapp: "https://api.whatsapp.com/send/?phone=995558661437&text&type=phone_number&app_absent=0", instagram: "https://www.instagram.com/musicpoint_batumi" }, calendarId: 'a64e7791e63684ebd4f847423eabd3f96001bf24cd05edc0e1f6ab3e4483949b@group.calendar.google.com' },
-            { id: 5, name: "Такаишвили 53", address: "ул. Такаишвили 53", coords: [41.641540, 41.628692], contacts: { telegram: "https://t.me/musicpoint_batumi", whatsapp: "https://api.whatsapp.com/send/?phone=995558661437&text&type=phone_number&app_absent=0", instagram: "https://www.instagram.com/musicpoint_batumi" }, calendarId: '7a1f59d2eda2595ef6603042b24fe8be201f6482724716ff24ddef0564eed679@group.calendar.google.com' },
-            { id: 6, name: "Гараж (Горгиладзе 63)", address: "ул. Горгиладзе 63", coords: [41.644533, 41.625926], contacts: { telegram: "https://t.me/musicpoint_batumi", whatsapp: "https://api.whatsapp.com/send/?phone=995558661437&text&type=phone_number&app_absent=0", instagram: "https://www.instagram.com/musicpoint_batumi" }, calendarId: '0dd24d467a8ebbcb41fcd8d0a619df2520aae6e953d15af2bb99e904780062aa@group.calendar.google.com' },
-            { id: 7, name: "Джавахишвили 4 (ближний)", address: "ул. Джавахишвили 4", coords: [41.641081, 41.621141], contacts: { telegram: "https://t.me/musicpoint_batumi", whatsapp: "https://api.whatsapp.com/send/?phone=995558661437&text&type=phone_number&app_absent=0", instagram: "https://www.instagram.com/musicpoint_batumi" }, calendarId: '6a01fb412233bc2a72c00e0c15d6eef0d1511fa525182232595cd778889c1540@group.calendar.google.com' },
-            { id: 8, name: "Джавахишвили 4 (дальний)", address: "ул. Джавахишвили 4", coords: [41.640946, 41.621165], contacts: { telegram: "https://t.me/musicpoint_batumi", whatsapp: "https://api.whatsapp.com/send/?phone=995558661437&text&type=phone_number&app_absent=0", instagram: "https://www.instagram.com/musicpoint_batumi" }, calendarId: '630f9753378b7b1b4ebef5e864ace5a69dc4d46f5b689065c48c62d438fbca7f@group.calendar.google.com' },
-            { id: 9, name: "Виола репточка (ул. Такаишвили 87)", address: "ул. Такаишвили 87", coords: [41.638663, 41.630580], contacts: { telegram: "https://t.me/musicpoint_batumi", whatsapp: "https://api.whatsapp.com/send/?phone=995558661437&text&type=phone_number&app_absent=0", instagram: "https://www.instagram.com/musicpoint_batumi" }, calendarId: '68ac2b48a381b21dd922a245a11f3db0306ea0171f4411660d4ba07ef72b3472@group.calendar.google.com' },
-            { id: 10, name: "Виола ближний вокальный класс (ул. Такаишвили 87)", address: "ул. Такаишвили 87", coords: [41.638607, 41.630432], contacts: { telegram: "https://t.me/musicpoint_batumi", whatsapp: "https://api.whatsapp.com/send/?phone=995558661437&text&type=phone_number&app_absent=0", instagram: "https://www.instagram.com/musicpoint_batumi" }, calendarId: 'd9a471bdc66dc5e1e4104544c68e9dd7db9032271d35b933d62de5d0b91c2ff4@group.calendar.google.com' },
-            { id: 11, name: "Виола дальний вокальный класс (ул. Такаишвили 87)", address: "ул. Такаишвили 87", coords: [41.638691, 41.630432], contacts: { telegram: "https://t.me/musicpoint_batumi", whatsapp: "https://api.whatsapp.com/send/?phone=995558661437&text&type=phone_number&app_absent=0", instagram: "https://www.instagram.com/musicpoint_batumi" }, calendarId: '3243bb3311f82be600a66e354213f1211107c0d93c5c55fe54aa0ce40e4ddebe@group.calendar.google.com' },
-            { id: 12, name: "Ангиса ближний зал (1-й тупик Ангиса, 4)", address: "1-й тупик Ангиса, 4", coords: [41.632402, 41.609973], contacts: { telegram: "https://t.me/musicpoint_batumi", whatsapp: "https://api.whatsapp.com/send/?phone=995558661437&text&type=phone_number&app_absent=0", instagram: "https://www.instagram.com/musicpoint_batumi" }, calendarId: '880d15d06facc18010bedd5ab67378b405f3dfce158fca3654ac0d9e1d6bdc68@group.calendar.google.com' },
-            { id: 13, name: "Ангиса дальний зал (1-й тупик Ангиса, 4)", address: "1-й тупик Ангиса, 4", coords: [41.632358, 41.609923], contacts: { telegram: "https://t.me/musicpoint_batumi", whatsapp: "https://api.whatsapp.com/send/?phone=995558661437&text&type=phone_number&app_absent=0", instagram: "https://www.instagram.com/musicpoint_batumi" }, calendarId: '3473102fb35e99f9d58168787b3289c773b527a26e5c6b983203fb0567f088c5@group.calendar.google.com' }
+            { id: 1, name: "1 - Бараташвили 45", short: "1", address: "ул. Бараташвили 45", coords: [41.647130, 41.639266], contacts: { telegram: "https://t.me/musicpoint_batumi", whatsapp: "https://api.whatsapp.com/send/?phone=995558661437&text&type=phone_number&app_absent=0", instagram: "https://www.instagram.com/musicpoint_batumi" }, calendarId: 'musicpointbatumi@gmail.com' },
+            { id: 2, name: "2 - Гараж (Горгиладзе 63)", short: "2", address: "ул. Горгиладзе 63", coords: [41.644533, 41.625926], contacts: { telegram: "https://t.me/musicpoint_batumi", whatsapp: "https://api.whatsapp.com/send/?phone=995558661437&text&type=phone_number&app_absent=0", instagram: "https://www.instagram.com/musicpoint_batumi" }, calendarId: '0dd24d467a8ebbcb41fcd8d0a619df2520aae6e953d15af2bb99e904780062aa@group.calendar.google.com' },
+            { id: 3, name: "3 A - Оранж верхний зал сцена (Такаишвили 8)", short: "3 A", address: "ул. Такаишвили 8", coords: [41.641375, 41.628412], contacts: { telegram: "https://t.me/musicpoint_batumi", whatsapp: "https://api.whatsapp.com/send/?phone=995558661437&text&type=phone_number&app_absent=0", instagram: "https://www.instagram.com/musicpoint_batumi" }, calendarId: '83fe942e969bae3b62e1786751202c1a3ecd9b63a1f7ce8539b359478a0b1cad@group.calendar.google.com' },
+            { id: 4, name: "3 B - Оранж нижний зал репточка (Такаишвили 8)", short: "3 B", address: "ул. Такаишвили 8", coords: [41.641279928201726, 41.628352071113504], contacts: { telegram: "https://t.me/musicpoint_batumi", whatsapp: "https://api.whatsapp.com/send/?phone=995558661437&text&type=phone_number&app_absent=0", instagram: "https://www.instagram.com/musicpoint_batumi" }, calendarId: '6f2a768f07757e6e2895e6bb4383763bbd7b1bfa1e6915e83243615e4443034b@group.calendar.google.com' },
+            { id: 5, name: "3 C - Оранж нижний вокальный (Такаишвили 8)", short: "3 C", address: "ул. Такаишвили 8", coords: [41.64136517546818, 41.62833409637027], contacts: { telegram: "https://t.me/musicpoint_batumi", whatsapp: "https://api.whatsapp.com/send/?phone=995558661437&text&type=phone_number&app_absent=0", instagram: "https://www.instagram.com/musicpoint_batumi" }, calendarId: 'a64e7791e63684ebd4f847423eabd3f96001bf24cd05edc0e1f6ab3e4483949b@group.calendar.google.com' },
+            { id: 6, name: "4 A - Виола ближний вокальный (Такаишвили 87)", short: "4 A", address: "ул. Такаишвили 87", coords: [41.638607, 41.630432], contacts: { telegram: "https://t.me/musicpoint_batumi", whatsapp: "https://api.whatsapp.com/send/?phone=995558661437&text&type=phone_number&app_absent=0", instagram: "https://www.instagram.com/musicpoint_batumi" }, calendarId: 'd9a471bdc66dc5e1e4104544c68e9dd7db9032271d35b933d62de5d0b91c2ff4@group.calendar.google.com' },
+            { id: 7, name: "4 B - Виола дальний фортепианный (Такаишвили 87)", short: "4 B", address: "ул. Такаишвили 87", coords: [41.638691, 41.630432], contacts: { telegram: "https://t.me/musicpoint_batumi", whatsapp: "https://api.whatsapp.com/send/?phone=995558661437&text&type=phone_number&app_absent=0", instagram: "https://www.instagram.com/musicpoint_batumi" }, calendarId: '3243bb3311f82be600a66e354213f1211107c0d93c5c55fe54aa0ce40e4ddebe@group.calendar.google.com' },
+            { id: 8, name: "4 C - Виола репточка (Такаишвили 87)", short: "4 C", address: "ул. Такаишвили 87", coords: [41.638663, 41.630580], contacts: { telegram: "https://t.me/musicpoint_batumi", whatsapp: "https://api.whatsapp.com/send/?phone=995558661437&text&type=phone_number&app_absent=0", instagram: "https://www.instagram.com/musicpoint_batumi" }, calendarId: '68ac2b48a381b21dd922a245a11f3db0306ea0171f4411660d4ba07ef72b3472@group.calendar.google.com' },
+            { id: 9, name: "5 A - Джава дальний вокальный с синтезатором (Джавахишвили 4)", short: "5 A", address: "ул. Джавахишвили 4", coords: [41.640946, 41.621165], contacts: { telegram: "https://t.me/musicpoint_batumi", whatsapp: "https://api.whatsapp.com/send/?phone=995558661437&text&type=phone_number&app_absent=0", instagram: "https://www.instagram.com/musicpoint_batumi" }, calendarId: '630f9753378b7b1b4ebef5e864ace5a69dc4d46f5b689065c48c62d438fbca7f@group.calendar.google.com' },
+            { id: 10, name: "5 B - Джава ближний вокальный с электропианино (Джавахишвили 4)", short: "5 B", address: "ул. Джавахишвили 4", coords: [41.641081, 41.621141], contacts: { telegram: "https://t.me/musicpoint_batumi", whatsapp: "https://api.whatsapp.com/send/?phone=995558661437&text&type=phone_number&app_absent=0", instagram: "https://www.instagram.com/musicpoint_batumi" }, calendarId: '6a01fb412233bc2a72c00e0c15d6eef0d1511fa525182232595cd778889c1540@group.calendar.google.com' },
+            { id: 11, name: "6 - Магнолия (Ш. Химшиашвили 4)", short: "6", address: "ул. Шерифа Химшиашвили 4", coords: [41.644387, 41.616821], contacts: { telegram: "https://t.me/musicpoint_batumi", whatsapp: "https://api.whatsapp.com/send/?phone=995558661437&text&type=phone_number&app_absent=0", instagram: "https://www.instagram.com/musicpoint_batumi" }, calendarId: 'ef133c541883862573b862447b38a2a2e518d1097d9609f2478dc3cbd2133519@group.calendar.google.com' },
+            { id: 12, name: "7 A - Ангиса ближний вокальный с электропианино (1-й тупик Ангиса 4)", short: "7 A", address: "1-й тупик Ангиса, 4", coords: [41.632402, 41.6101000], contacts: { telegram: "https://t.me/musicpoint_batumi", whatsapp: "https://api.whatsapp.com/send/?phone=995558661437&text&type=phone_number&app_absent=0", instagram: "https://www.instagram.com/musicpoint_batumi" }, calendarId: '880d15d06facc18010bedd5ab67378b405f3dfce158fca3654ac0d9e1d6bdc68@group.calendar.google.com' },
+            { id: 13, name: "7 B - Ангиса дальний вокальный с синтезатором (1-й тупик Ангиса 4)", short: "7 B", address: "1-й тупик Ангиса, 4", coords: [41.632358, 41.609923], contacts: { telegram: "https://t.me/musicpoint_batumi", whatsapp: "https://api.whatsapp.com/send/?phone=995558661437&text&type=phone_number&app_absent=0", instagram: "https://www.instagram.com/musicpoint_batumi" }, calendarId: '3473102fb35e99f9d58168787b3289c773b527a26e5c6b983203fb0567f088c5@group.calendar.google.com' }
         ];
 
         let currentPoint = null;
@@ -283,7 +283,6 @@
 
         function showToast(message) { /* ... no changes ... */ }
         
-        // MODIFIED FUNCTION: Fetches and processes calendar data in Georgian timezone
         async function fetchCalendarData(year, month) {
             const gridWrapper = document.getElementById('calendar-grid-wrapper');
             if (GOOGLE_API_KEY === 'YOUR_GOOGLE_API_KEY' || !currentPoint.calendarId || currentPoint.calendarId.startsWith('ID_КАЛЕНДАРЯ')) {
@@ -308,26 +307,19 @@
                 const data = await response.json();
                 
                 const bookings = {};
-                const georgianTimezone = 'Asia/Tbilisi'; // Georgian timezone
-
                 (data.items || []).forEach(event => {
-                    if (!event.start.dateTime || !event.end.dateTime) return;
+                    if (!event.start.dateTime) return;
                     
                     const startDateObj = new Date(event.start.dateTime);
                     const endDateObj = new Date(event.end.dateTime);
                     
-                    // Get date string (YYYY-MM-DD) in Georgian time using a locale that provides this format
-                    const dateStr = startDateObj.toLocaleDateString('en-CA', { timeZone: georgianTimezone });
-                    
-                    // Get time strings (HH:mm) in Georgian time
-                    const startTimeStr = startDateObj.toLocaleTimeString('ru-RU', { timeZone: georgianTimezone, hour: '2-digit', minute: '2-digit', hour12: false });
-                    const endTimeStr = endDateObj.toLocaleTimeString('ru-RU', { timeZone: georgianTimezone, hour: '2-digit', minute: '2-digit', hour12: false });
+                    const dateStr = `${startDateObj.getFullYear()}-${String(startDateObj.getMonth() + 1).padStart(2, '0')}-${String(startDateObj.getDate()).padStart(2, '0')}`;
                     
                     if (!bookings[dateStr]) bookings[dateStr] = [];
                     
                     bookings[dateStr].push({
-                        startTime: startTimeStr.replace('24:', '00:'), // Handle midnight case
-                        endTime: endTimeStr.replace('24:', '00:'),
+                        startTime: startDateObj.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' }),
+                        endTime: endDateObj.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' }),
                         occupant: event.summary
                     });
                 });
@@ -411,7 +403,6 @@
             }
         }
         
-        // MODIFIED FUNCTION: Displays daily schedule starting from 11:00 AM
         function showDayView(date) {
             calendarView.style.display = 'none';
             dayView.style.display = 'flex';
@@ -420,8 +411,8 @@
             dayScheduleSlots.innerHTML = '';
             
             const dateStr = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-            
             const bookingsForDay = (monthBookings[dateStr] || []).map(b => {
+                // Преобразуем время в минуты с начала дня
                 const [startH, startM] = b.startTime.split(":").map(Number);
                 const [endH, endM] = b.endTime.split(":").map(Number);
                 return {
@@ -431,47 +422,35 @@
                 };
             }).sort((a, b) => a.startMinutes - b.startMinutes);
 
-            const startHour = 11, endHour = 23; // MODIFIED: Day view starts at 11:00
-            const dayStart = startHour * 60; // 660 minutes
+            const startHour = 8, endHour = 23;
+            const dayStart = startHour * 60;
             const dayEnd = endHour * 60;
-            
-            // Filter out bookings that end before our new start time
-            const relevantBookings = bookingsForDay.filter(b => b.endMinutes > dayStart);
+            let lastEnd = dayStart;
 
-            let lastEnd = dayStart; // Initialize with the new start time
-
-            if (relevantBookings.length === 0) {
-                // The whole visible day is free
+            if (bookingsForDay.length === 0) {
+                // Весь день свободен
                 const freeDiv = document.createElement('div');
                 freeDiv.className = 'p-2.5 rounded-md text-sm border flex items-center bg-slate-700/40 text-slate-300 border-slate-500/40';
                 freeDiv.innerHTML = `<span class="font-bold w-28 flex-shrink-0">${formatTime(dayStart)} - ${formatTime(dayEnd)}</span> <span>Свободно</span>`;
                 dayScheduleSlots.appendChild(freeDiv);
             } else {
-                relevantBookings.forEach(booking => {
-                    // If the booking starts before our viewable window, but ends within it,
-                    // we consider its start to be the window's start for layout purposes.
-                    const effectiveStartMinutes = Math.max(booking.startMinutes, dayStart);
-
-                    // Is there a free slot before this booking?
-                    if (effectiveStartMinutes > lastEnd) {
+                bookingsForDay.forEach((booking, idx) => {
+                    // Свободный слот до события
+                    if (booking.startMinutes > lastEnd) {
                         const freeDiv = document.createElement('div');
                         freeDiv.className = 'p-2.5 rounded-md text-sm border flex items-center bg-slate-700/40 text-slate-300 border-slate-500/40';
-                        freeDiv.innerHTML = `<span class="font-bold w-28 flex-shrink-0">${formatTime(lastEnd)} - ${formatTime(effectiveStartMinutes)}</span> <span>Свободно</span>`;
+                        freeDiv.innerHTML = `<span class="font-bold w-28 flex-shrink-0">${formatTime(lastEnd)} - ${formatTime(booking.startMinutes)}</span> <span>Свободно</span>`;
                         dayScheduleSlots.appendChild(freeDiv);
                     }
-
-                    // The occupied slot itself
+                    // Занятый слот
                     const slotDiv = document.createElement('div');
                     slotDiv.className = 'p-2.5 rounded-md text-sm border flex items-center bg-red-500/30 text-red-300/80 border-red-500/40';
                     const timeText = `${booking.startTime} - ${booking.endTime}`;
                     slotDiv.innerHTML = `<span class="font-bold w-28 flex-shrink-0">${timeText}</span> <span>${booking.occupant}</span>`;
                     dayScheduleSlots.appendChild(slotDiv);
-                    
-                    // Update the end of the last rendered block
                     lastEnd = Math.max(lastEnd, booking.endMinutes);
                 });
-
-                // Free slot after the very last booking
+                // Свободный слот после последнего события
                 if (lastEnd < dayEnd) {
                     const freeDiv = document.createElement('div');
                     freeDiv.className = 'p-2.5 rounded-md text-sm border flex items-center bg-slate-700/40 text-slate-300 border-slate-500/40';
@@ -546,8 +525,8 @@
             musicPoints.forEach(point => {
                 const btn = document.createElement('button');
                 btn.className = 'w-full bg-slate-700/80 hover:bg-sky-600 text-white font-semibold rounded-lg py-2 px-3 text-sm shadow transition-all flex items-center justify-between';
-                // MODIFIED: Added text-left to the span to align text to the left
-                btn.innerHTML = `<span class="text-left">${point.name}</span><svg class="w-4 h-4 text-sky-300 ml-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>`;
+                // Изменено: добавлен класс text-left для выравнивания по левому краю
+                btn.innerHTML = `<span class="text-left flex-1">${point.name}</span><svg class='w-4 h-4 text-sky-300 ml-2 flex-shrink-0' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'/></svg>`;
                 btn.addEventListener('click', () => {
                     pointsListModal.classList.add('opacity-0', 'pointer-events-none');
                     openModal(point);
@@ -569,6 +548,7 @@
             }
         });
 
+        // При создании маркеров на карте используем только короткое обозначение
         musicPoints.forEach(point => {
             const customIcon = L.divIcon({ 
                 className: 'custom-icon', 
@@ -578,7 +558,8 @@
             
             const marker = L.marker(point.coords, { icon: customIcon }).addTo(map);
 
-            marker.bindTooltip(point.name, {
+            // Показываем только короткое обозначение в тултипе
+            marker.bindTooltip(point.short, {
                 permanent: true,
                 direction: 'top',
                 offset: [0, -15],
@@ -628,8 +609,8 @@
             const loader = document.getElementById('loader-overlay');
             setTimeout(() => {
                 if (loader) {
-                    loader.style.opacity = '0';
-                    setTimeout(() => loader.style.display = 'none', 500);
+                    loader.classList.add('fade-out');
+                    setTimeout(() => loader.style.display = 'none', 600);
                 }
             }, 2000);
         });
